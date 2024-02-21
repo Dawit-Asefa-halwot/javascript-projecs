@@ -1,0 +1,166 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body>
+    <button
+      onclick="
+        var currentTime = new Date();
+        var day = currentTime.getDate();
+        var dayNames = [
+          'Sunday',
+          'Monday',
+          'Tuesday',
+          'Wednesday',
+          'Thursday',
+          'Friday',
+          'Saturday',
+        ];
+        var dayName = dayNames[currentTime.getDay()];
+        var monthNumber = currentTime.getMonth() + 1;
+        var monthNames = [
+          'January',
+          'February',
+          'March',
+          'April',
+          'May',
+          'June',
+          'July',
+          'August',
+          'September',
+          'October',
+          'November',
+          'December',
+        ];
+        var monthName = monthNames[currentTime.getMonth()];
+        var year = currentTime.getFullYear();
+        var hours = currentTime.getHours();
+        var minutes = currentTime.getMinutes();
+        var seconds = currentTime.getSeconds();
+
+        day = day < 10 ? '0' + day : day;
+        monthNumber = monthNumber < 10 ? '0' + monthNumber : monthNumber;
+        hours = hours < 10 ? '0' + hours : hours;
+        minutes = minutes < 10 ? '0' + minutes : minutes;
+        seconds = seconds < 10 ? '0' + seconds : seconds;
+
+        var formattedTime = hours + ':' + minutes + ':' + seconds;
+        var formattedDate = day + '/' + monthNumber + '/' + year;
+
+        alert(
+          'GREGORIAN CALENDAR\n\nCurrent time is: ' +
+            formattedTime +
+            ',\nCurrent date is: ' +
+            formattedDate +
+            ',\nCurrent day name is: ' +
+            dayName +
+            ',\nCurrent month name is: ' +
+            monthName
+        );
+      "
+    >
+      Gregorian Calendar
+    </button>
+    <button
+      <button
+      onclick="
+        var currentTime = new Date();
+
+        // Adjust Ethiopian calendar differences
+
+        var ethiopianYear = currentTime.getFullYear() - 8;
+        var ethiopianMonth = currentTime.getMonth() + 1 - 9;
+        var ethiopianDay = currentTime.getDate() - 8;
+
+        // Handle negative values for months and days
+        if (ethiopianMonth <= 0) {
+            ethiopianMonth += 13; // Ethiopian calendar has 13 months
+        }
+        if (ethiopianDay <= 0) {
+            ethiopianDay += 30; // Assume 30 days in each Ethiopian month
+        }
+
+        // Adjust for leap year (every 4 years)
+        var isLeapYear =
+            (ethiopianYear % 4 === 3 && ethiopianYear % 100 !== 99) ||
+            ethiopianYear % 400 === 399;
+
+        if (isLeapYear && ethiopianMonth === 13 && ethiopianDay > 5) {
+            ethiopianDay -= 1; // Pagume month in a leap year has 5 days
+        }
+
+        // Ethiopian month names
+        var ethiopianMonthNames = [
+            'መስከረም',
+            'ትቅምት',
+            'ህዳር',
+            'ታህሳስ',
+            'ጥር',
+            'የካቲት',
+            'መጋቢት',
+            'ሚያዝያ',
+            'ግንቦት',
+            'ሰነ',
+            'ሃምለ',
+            'ነሃሰ',
+            'ጳጉመ (Leap Year)',
+        ];
+
+        var ethiopianMonthName = ethiopianMonthNames[ethiopianMonth - 1];
+
+        // Ethiopian day names
+        var ethiopianDayNames = [
+            'ሰኞ',
+            'ማክሰኞ',
+            'እርብ',
+            'ሃሙስ',
+            'አርብ',
+            'ቅዳመ',
+            'እሁድ',
+        ];
+
+        var ethiopianDayName = ethiopianDayNames[currentTime.getDay()];
+
+        // Adjust for time difference between Ethiopia and New York
+        var isDaylightSavingTime =
+            currentTime.getMonth() > 2 && currentTime.getMonth() < 10; // March to October
+        var timeDifference = isDaylightSavingTime ? 7 : 8;
+
+        var ethiopianHour = currentTime.getUTCHours() + 3 + timeDifference;
+        var ethiopianMinutes = currentTime.getMinutes();
+        var ethiopianSeconds = currentTime.getSeconds();
+
+        ethiopianHour = ethiopianHour < 10 ? '0' + ethiopianHour : ethiopianHour;
+        ethiopianMinutes = ethiopianMinutes < 10 ? '0' + ethiopianMinutes : ethiopianMinutes;
+        ethiopianSeconds = ethiopianSeconds < 10 ? '0' + ethiopianSeconds : ethiopianSeconds;
+
+        alert(
+            'ETHIOPIAN CALENDAR\n\n' +
+            'Current year is: ' +
+            ethiopianYear +
+            ',\n' +
+            'Current month is: ' +
+            ethiopianMonthName +
+            ',\n' +
+            'Current day is: ' +
+            ethiopianDay +
+            ',\n' +
+            'Current day name is: ' +
+            ethiopianDayName +
+            ',\n' +
+            'Current time in Ethiopia is: ' +
+            ethiopianHour +
+            ':' +
+            ethiopianMinutes +
+            ':' +
+            ethiopianSeconds
+        );
+    "
+    >
+      Ethiopian Calendar
+    </button>
+  </body>
+</html>

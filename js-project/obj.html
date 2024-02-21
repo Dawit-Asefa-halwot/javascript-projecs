@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body>
+    <script>
+      const product1 = {
+        name: "shirt",
+
+        "delivery-time": "1day",
+
+        rating: {
+          stars: 4.5,
+          count: 87,
+        },
+
+        fun: function function1() {
+          console.log("hello world function");
+        },
+      };
+
+      console.log(product1.name);
+      console.log(product1["name"]);
+      console.log(product1["delivery-time"]);
+      console.log(product1.rating.count);
+      product1.fun();
+      console.log(typeof console.log);
+      console.log(JSON.stringify(product1));
+      const jsonstringify = JSON.stringify(product1);
+      console.log(product1);
+      console.log(JSON.parse(jsonstringify));
+    </script>
+  </body>
+</html>
